@@ -9,7 +9,7 @@ c := slack.NewClient("<YOUR SLACK API TOKEN>")
 c.SetChannel("#general").SetText("こんにちは").ChatPostMessage()
 ```
 
-You can check <YOUR SLACK API TOKEN> from [here](https://api.slack.com/docs/oauth-test-tokens).
+You can check the token from [here](https://api.slack.com/docs/oauth-test-tokens).
 
 Install
 -------
