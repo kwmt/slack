@@ -4,8 +4,8 @@ import (
 	"github.com/kwmt/slack"
 )
 
-func ExampleChatPostMessage() {
+func Example() {
 
-	c := slack.NewClient("<TOKEN>")
+	c := slack.NewClient("TOKEN")
 	c.SetChannel("#general").SetText("こんにちは").ChatPostMessage()
 }
