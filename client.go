@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-type client struct {
+type Client struct {
 	httpClient httpRunner
 	token      string
 	values     url.Values
@@ -40,8 +40,8 @@ type Message struct {
 	Ts       string `json:"ts,omitempty"`
 }
 
-func NewClient(token string) *client {
-	c := &client{
+func NewClient(token string) *Client {
+	c := &Client{
 		httpClient: &http.Client{Timeout: time.Duration(30) * time.Second},
 		token:      token,
 		values:     url.Values{},
@@ -49,20 +49,20 @@ func NewClient(token string) *client {
 	c.values.Set("token", token)
 	return c
 }
-func (c *client) SetChannel(channel string) *client {
+func (c *Client) SetChannel(channel string) *Client {
 	c.values.Set("channel", channel)
 	return c
 }
-func (c *client) SetText(text string) *client {
+func (c *Client) SetText(text string) *Client {
 	c.values.Set("text", text)
 	return c
 }
 
-func (c *client) ChatPostMessage() (*Response, error) {
+func (c *Client) ChatPostMessage() (*Response, error) {
 	return c.post("/chat.postMessage")
 }
 
-func (c *client) post(method string) (*Response, error) {
+func (c *Client) post(method string) (*Response, error) {
 	fmt.Println(c.values.Encode())
 
 	req, err := http.NewRequest("POST", slack_api_base_url+method+"?"+c.values.Encode(), nil)
