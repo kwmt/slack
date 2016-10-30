@@ -40,15 +40,22 @@ type Message struct {
 	Ts       string `json:"ts,omitempty"`
 }
 
-func NewClient(token string) *Client {
+
+
+func NewClient() *Client {
 	c := &Client{
 		httpClient: &http.Client{Timeout: time.Duration(30) * time.Second},
-		token:      token,
 		values:     url.Values{},
 	}
-	c.values.Set("token", token)
 	return c
 }
+
+func (c *Client) SetToken(token string) *Client {
+	c.values.Set("token", token)
+	c.token = token
+	return c
+}
+
 func (c *Client) SetChannel(channel string) *Client {
 	c.values.Set("channel", channel)
 	return c

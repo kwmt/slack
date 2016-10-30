@@ -32,9 +32,9 @@ func TestPostChatMessage(t *testing.T) {
 		},
 		err: nil,
 	}
-	c := NewClient(token)
+	c := NewClient()
 	c.httpClient = tc
-	c.SetChannel("#general").SetText("こんにちは")
+	c.SetToken(token).SetChannel("#general").SetText("こんにちは")
 	resp, err := c.ChatPostMessage()
 
 	if err != nil {
@@ -63,9 +63,9 @@ func TestPostChatMessageError(t *testing.T) {
 		},
 		err: nil,
 	}
-	c := NewClient(token)
+	c := NewClient()
 	c.httpClient = tc
-	c.SetChannel("#general").SetText("こんにちは")
+	c.SetToken(token).SetChannel("#general").SetText("こんにちは")
 	resp, err := c.ChatPostMessage()
 
 	if err != nil {
