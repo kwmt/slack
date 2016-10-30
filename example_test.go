@@ -6,6 +6,6 @@ import (
 
 func Example() {
 
-	c := slack.NewClient("TOKEN")
-	c.SetChannel("#general").SetText("こんにちは").ChatPostMessage()
+	c := slack.NewClient()
+	c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").ChatPostMessage()
 }

@@ -4,11 +4,11 @@ Usage
 -----
 
 ```go
-c := slack.NewClient("<YOUR SLACK API TOKEN>")
-c.SetChannel("#general").SetText("こんにちは").ChatPostMessage()
+c := slack.NewClient()
+c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").ChatPostMessage()
 ```
 
-You can check the token from [here](https://api.slack.com/docs/oauth-test-tokens).
+You can check the token for test from [here](https://api.slack.com/docs/oauth-test-tokens).
 
 Install
 -------
