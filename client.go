@@ -64,6 +64,14 @@ func (c *Client) SetText(text string) *Client {
 	c.values.Set("text", text)
 	return c
 }
+func (c *Client) SetUserName(name string) *Client {
+	c.values.Set("username", name)
+	return c
+}
+func (c *Client) SetIconEmoji(iconEmoji string) *Client {
+	c.values.Set("icon_emoji", iconEmoji)
+	return c
+}
 
 func (c *Client) PostMessage() (*Response, error) {
 	return c.post("/chat.postMessage")
