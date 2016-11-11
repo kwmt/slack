@@ -65,7 +65,7 @@ func (c *Client) SetText(text string) *Client {
 	return c
 }
 
-func (c *Client) ChatPostMessage() (*Response, error) {
+func (c *Client) PostMessage() (*Response, error) {
 	return c.post("/chat.postMessage")
 }
 

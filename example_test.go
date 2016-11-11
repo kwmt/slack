@@ -7,5 +7,5 @@ import (
 func Example() {
 
 	c := slack.NewClient()
-	c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").ChatPostMessage()
+	c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").PostMessage()
 }
