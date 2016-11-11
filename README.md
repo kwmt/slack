@@ -5,7 +5,7 @@ Usage
 
 ```go
 c := slack.NewClient()
-c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").ChatPostMessage()
+c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").PostMessage()
 ```
 
 You can check the token for test from [here](https://api.slack.com/docs/oauth-test-tokens).
