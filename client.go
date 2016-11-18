@@ -73,7 +73,7 @@ type Field struct {
 
 type Footer struct {
 	Footer      string `json:"footer,omitempty"`
-	FooterIcon string `json:"footer_icon,omitempty"`
+	Icon string `json:"footer_icon,omitempty"`
 	Ts          int64  `json:"ts,omitempty"`
 }
 
