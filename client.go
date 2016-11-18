@@ -40,43 +40,6 @@ type Message struct {
 	Ts       string `json:"ts,omitempty"`
 }
 
-// color : good, warning, danger or #44ddff
-type Attachment struct {
-	Fallback string `json:"fallback"`
-	Color    string `json:"color,omitempty"`
-	Pretext  string `json:"pretext,omitempty"`
-	Author
-	Title
-	Text     string `json:"text,omitempty"`
-	Fields   []Field
-	ImageUrl string `json:"image_url,omitempty"`
-	ThumbUrl string `json:"thumb_url,omitempty"`
-	Footer
-}
-
-type Author struct {
-	Name string `json:"author_name,omitempty"`
-	Link string `json:"author_link,omitempty"`
-	Icon string `json:"author_icon,omitempty"`
-}
-
-type Title struct {
-	Title string `json:"title,omitempty"`
-	Link  string `json:"title_link,omitempty"`
-}
-
-type Field struct {
-	Title string `json:"title,omitempty"`
-	Value string `json:"value,omitempty"`
-	Short string `json:"short,omitempty"`
-}
-
-type Footer struct {
-	Footer      string `json:"footer,omitempty"`
-	Icon string `json:"footer_icon,omitempty"`
-	Ts          int64  `json:"ts,omitempty"`
-}
-
 func NewClient() *Client {
 	c := &Client{
 		httpClient: &http.Client{Timeout: time.Duration(30) * time.Second},
@@ -105,6 +68,10 @@ func (c *Client) SetUserName(name string) *Client {
 }
 func (c *Client) SetIconEmoji(iconEmoji string) *Client {
 	c.values.Set("icon_emoji", iconEmoji)
+	return c
+}
+func (c *Client) SetAttachment(attachmentsJSON string) *Client {
+	c.values.Set("attachments", attachmentsJSON)
 	return c
 }
 
