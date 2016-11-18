@@ -2,7 +2,6 @@ package slack
 
 import (
 	"encoding/json"
-	// "fmt"
 )
 
 const (
