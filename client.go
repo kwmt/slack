@@ -72,9 +72,9 @@ type Field struct {
 }
 
 type Footer struct {
-	footer      string `json:"footer,omitempty"`
-	footer_icon string `json:"footer_icon,omitempty"`
-	ts          int64  `json:"ts,omitempty"`
+	Footer      string `json:"footer,omitempty"`
+	FooterIcon string `json:"footer_icon,omitempty"`
+	Ts          int64  `json:"ts,omitempty"`
 }
 
 func NewClient() *Client {
