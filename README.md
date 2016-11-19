@@ -5,7 +5,7 @@ Usage
 
 ```go
 attachments := slack.NewAttachments(1)
-attachments[0].SetFallback("Required plain-text summary of the attachment.")
+attachments[0].SetFallback("Required plain-text summary of the attachment.").SetTitle("タイトル")
 
 json, err := slack.JSON(attachments)
 if err != nil {
