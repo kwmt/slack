@@ -49,6 +49,7 @@ func TestPostChatMessage(t *testing.T) {
 	}
 
 }
+
 // TODO:共通化
 func TestPostChatMessageError(t *testing.T) {
 	const token = "token"

@@ -40,8 +40,6 @@ type Message struct {
 	Ts       string `json:"ts,omitempty"`
 }
 
-
-
 func NewClient() *Client {
 	c := &Client{
 		httpClient: &http.Client{Timeout: time.Duration(30) * time.Second},
@@ -70,6 +68,10 @@ func (c *Client) SetUserName(name string) *Client {
 }
 func (c *Client) SetIconEmoji(iconEmoji string) *Client {
 	c.values.Set("icon_emoji", iconEmoji)
+	return c
+}
+func (c *Client) SetAttachments(attachmentsJSON string) *Client {
+	c.values.Set("attachments", attachmentsJSON)
 	return c
 }
 
