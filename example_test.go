@@ -1,6 +1,8 @@
 package slack_test
 
 import (
+	"log"
+
 	"github.com/kwmt/slack"
 )
 
@@ -53,7 +55,7 @@ func ExampleAttachment() {
 
 	json, err := slack.JSON(attachments)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 
 	c := slack.NewClient()
