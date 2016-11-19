@@ -4,8 +4,16 @@ Usage
 -----
 
 ```go
+attachments := slack.NewAttachments(1)
+attachments[0].SetFallback("Required plain-text summary of the attachment.")
+
+json, err := slack.JSON(attachments)
+if err != nil {
+	log.Println(err)
+}
+
 c := slack.NewClient()
-c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").PostMessage()
+c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").SetAttachments(json).PostMessage()
 ```
 
 You can check the token for test from [here](https://api.slack.com/docs/oauth-test-tokens).
