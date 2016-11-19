@@ -59,5 +59,5 @@ func ExampleAttachment() {
 	}
 
 	c := slack.NewClient()
-	c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").SetAttachment(json).PostMessage()
+	c.SetToken("YOUR TOKEN").SetChannel("#general").SetText("こんにちは").SetAttachments(json).PostMessage()
 }

@@ -70,7 +70,7 @@ func (c *Client) SetIconEmoji(iconEmoji string) *Client {
 	c.values.Set("icon_emoji", iconEmoji)
 	return c
 }
-func (c *Client) SetAttachment(attachmentsJSON string) *Client {
+func (c *Client) SetAttachments(attachmentsJSON string) *Client {
 	c.values.Set("attachments", attachmentsJSON)
 	return c
 }
