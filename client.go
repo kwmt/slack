@@ -62,16 +62,40 @@ func (c *Client) SetText(text string) *Client {
 	c.values.Set("text", text)
 	return c
 }
-func (c *Client) SetUserName(name string) *Client {
-	c.values.Set("username", name)
-	return c
-}
-func (c *Client) SetIconEmoji(iconEmoji string) *Client {
-	c.values.Set("icon_emoji", iconEmoji)
+func (c *Client) SetParse(parse string) *Client {
+	c.values.Set("parse", parse)
 	return c
 }
 func (c *Client) SetAttachments(attachmentsJSON string) *Client {
 	c.values.Set("attachments", attachmentsJSON)
+	return c
+}
+func (c *Client) SetLinkNames(linkNames int) *Client {
+	c.values.Set("link_names", linkNames)
+	return c
+}
+func (c *Client) SetUnfurlLinks(unfurlLinks bool) *Client {
+	c.values.Set("unfurl_links", unfurlLinks)
+	return c
+}
+func (c *Client) SetUnfurlMedia(unfurlMedia bool) *Client {
+	c.values.Set("unfurl_media", unfurlMedia)
+	return c
+}
+func (c *Client) SetUserName(name string) *Client {
+	c.values.Set("username", name)
+	return c
+}
+func (c *Client) SetAsUser(asUser bool) *Client {
+	c.values.Set("as_user", as_user)
+	return c
+}
+func (c *Client) SetIconURL(iconURL string) *Client {
+	c.values.Set("icon_url", iconURL)
+	return c
+}
+func (c *Client) SetIconEmoji(iconEmoji string) *Client {
+	c.values.Set("icon_emoji", iconEmoji)
 	return c
 }
 
