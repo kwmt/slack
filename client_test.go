@@ -48,6 +48,12 @@ func TestPostChatMessage(t *testing.T) {
 		t.Errorf("text: got %s, expect %s", resp.Message.Text, "こんにちは")
 	}
 
+	url := `https://slack.com/api/chat.postMessage?channel=%23general&text=%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF&token=token`
+
+	if resp.request.URL.String() != url {
+		t.Errorf("text: got %s, expect %s", resp.request.URL.String(), url)
+	}
+
 }
 
 // TODO:共通化

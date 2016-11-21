@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strconv"
 	"time"
 )
 
@@ -29,6 +30,7 @@ type Response struct {
 	Ts      string  `json:"ts,omitempty"`
 	Message Message `json:"message,omitempty"`
 	Error   string  `json:"error,omitempty"`
+	request *http.Request
 }
 
 type Message struct {
@@ -62,21 +64,49 @@ func (c *Client) SetText(text string) *Client {
 	c.values.Set("text", text)
 	return c
 }
-func (c *Client) SetUserName(name string) *Client {
-	c.values.Set("username", name)
-	return c
-}
-func (c *Client) SetIconEmoji(iconEmoji string) *Client {
-	c.values.Set("icon_emoji", iconEmoji)
+func (c *Client) SetParse(parse string) *Client {
+	c.values.Set("parse", parse)
 	return c
 }
 func (c *Client) SetAttachments(attachmentsJSON string) *Client {
 	c.values.Set("attachments", attachmentsJSON)
 	return c
 }
+func (c *Client) SetLinkNames(linkNames int) *Client {
+	c.values.Set("link_names", strconv.Itoa(linkNames))
+	return c
+}
+func (c *Client) SetUnfurlLinks(unfurlLinks bool) *Client {
+	c.values.Set("unfurl_links", strconv.FormatBool(unfurlLinks))
+	return c
+}
+func (c *Client) SetUnfurlMedia(unfurlMedia bool) *Client {
+	c.values.Set("unfurl_media", strconv.FormatBool(unfurlMedia))
+	return c
+}
+func (c *Client) SetUserName(name string) *Client {
+	c.values.Set("username", name)
+	return c
+}
+func (c *Client) SetAsUser(asUser bool) *Client {
+	c.values.Set("as_user", strconv.FormatBool(asUser))
+	return c
+}
+func (c *Client) SetIconURL(iconURL string) *Client {
+	c.values.Set("icon_url", iconURL)
+	return c
+}
+func (c *Client) SetIconEmoji(iconEmoji string) *Client {
+	c.values.Set("icon_emoji", iconEmoji)
+	return c
+}
 
 func (c *Client) PostMessage() (*Response, error) {
 	return c.post("/chat.postMessage")
+}
+
+func (resp *Response) GetRequest() *http.Request {
+	return resp.request
 }
 
 func (c *Client) post(method string) (*Response, error) {
@@ -97,7 +127,13 @@ func (c *Client) post(method string) (*Response, error) {
 	}
 	defer resp.Body.Close()
 
-	return parse(resp)
+	response, err := parse(resp)
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+	response.request = req
+	return response, nil
 }
 
 func parse(resp *http.Response) (*Response, error) {
